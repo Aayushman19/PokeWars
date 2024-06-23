@@ -23,6 +23,9 @@ async function getPokemon (){
 
         const data = await response.json();
         // get a random stat to compare
+        document.getElementsByTagName(r1_desc).innerHTML = data.height;
+        const stat2 = data.abilities[base_experience]
+        const stat3 = data.weight
 
     } catch(error){
         console.log(error);

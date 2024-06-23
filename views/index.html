@@ -4,13 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokemon Wars</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="/index.js"></script>
 </head>
 <body>
     <input type="text" id="player1" placeholder="User 1, Choose your pokemon">
     <button onclick="getPokemon()" type="submit">Choose</button>
+    <br><br>
     <input type="text" id="player2" placeholder="User 2, Choose your pokemon">
     <button onclick="getPokemon()" type="submit">Choose</button>
-    
-    <img src="background2.jpg" alt="pokemon arena" id="img">
+    <br><br>
+    <table>
+        <tr>
+          <th scope="col">Pokemon</th>
+          <th scope="col">Height</th>
+          <th scope="col">Ability</th>
+          <th scope="col">Weight</th>
+        </tr>
+        <tr >
+          <th scope="row">Pokemon 1</th>
+          <td id="r1_desc">stat1</td>
+          <td id="r1_desc">4,569</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th scope="row">Pokemon 2</th>
+          <td>7</td>
+          <td>7,223</td>
+          <td></td>
+        </tr>
+      </table>
 </body>
 </html>
