@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokemon Wars</title>
     <link rel="stylesheet" href="style.css">
-    <script src="/index.js"></script>
 </head>
 <body>
     <input type="text" id="player1" placeholder="User 1, Choose your pokemon">
-    <button onclick="getPokemon()" type="submit">Choose</button>
+    <button onclick="getPokemon()" id="btn1" >Choose</button>
     <br><br>
     <input type="text" id="player2" placeholder="User 2, Choose your pokemon">
     <button onclick="getPokemon()" type="submit">Choose</button>
@@ -23,9 +22,9 @@
         </tr>
         <tr >
           <th scope="row">Pokemon 1</th>
-          <td id="r1_desc">stat1</td>
-          <td id="r1_desc">4,569</td>
-          <td></td>
+          <td id="r1_desc1"></td>
+          <td id="r1_desc2"></td>
+          <td id="r1_desc3"></td>
         </tr>
         <tr>
           <th scope="row">Pokemon 2</th>
@@ -34,5 +33,6 @@
           <td></td>
         </tr>
       </table>
+      <script src="/index.js"></script>
 </body>
 </html>
