@@ -15,18 +15,18 @@ async function getPokemon() {
 
         plr1.addEventListener('click', setVal);
 
-        function setVal(){
+        function setVal() {
             document.getElementById("r1_desc1").innerHTML = data1.height;
             document.getElementById("r1_desc2").innerHTML = data1.base_experience;
             document.getElementById("r1_desc3").innerHTML = data1.weight;
         }
-        
+
         const data2 = await response2.json();
         var plr2 = document.getElementById("btn2");
 
         plr2.addEventListener('click', setVal2);
 
-        function setVal2(){
+        function setVal2() {
             document.getElementById("r2_desc1").innerHTML = data2.height;
             document.getElementById("r2_desc2").innerHTML = data2.base_experience;
             document.getElementById("r2_desc3").innerHTML = data2.weight;
@@ -35,4 +35,46 @@ async function getPokemon() {
     catch (error) {
         console.log(error);
     }
+}
+
+function fight() {
+
+    var points1 = 0;
+    var points2 = 0;
+
+    //Select Ability to compare for player 1
+    var p1_abil1 = document.getElementById("r1_desc1");
+    var p1_abil2 = document.getElementById("r1_desc2");
+    var p1_abil3 = document.getElementById("r1_desc3");
+
+    //Select Ability to compare for player 2
+    var p2_abil1 = document.getElementById("r2_desc1");
+    var p2_abil2 = document.getElementById("r2_desc2");
+    var p2_abil3 = document.getElementById("r2_desc3");
+
+    if (p1_abil1 > p2_abil1) {
+        points1++;
+    }
+    else {
+        points2++;
+    }
+    if (p1_abil2 > p2_abil2) {
+        points1++;
+    }
+    else {
+        points2++;
+    }
+    if (p1_abil3 > p2_abil3) {
+        points1++;
+    } else {
+        points2++;
+    }
+
+    var ans = document.getElementById("result");
+    if (points1 > points2) {
+        ans.innerHTML = "Player1 Wins";
+    } else if(points2 > points1){
+        ans.innerHTML = "Player2 Wins"
+    } 
+
 }
