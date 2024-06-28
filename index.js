@@ -43,14 +43,14 @@ function fight() {
     var points2 = 0;
 
     //Select Ability to compare for player 1
-    var p1_abil1 = document.getElementById("r1_desc1");
-    var p1_abil2 = document.getElementById("r1_desc2");
-    var p1_abil3 = document.getElementById("r1_desc3");
+    let p1_abil1 = document.getElementById("r1_desc1").innerText;
+    let p1_abil2 = document.getElementById("r1_desc2").innerText;
+    let p1_abil3 = document.getElementById("r1_desc3").innerText;
 
     //Select Ability to compare for player 2
-    var p2_abil1 = document.getElementById("r2_desc1");
-    var p2_abil2 = document.getElementById("r2_desc2");
-    var p2_abil3 = document.getElementById("r2_desc3");
+    let p2_abil1 = document.getElementById("r2_desc1").innerText;
+    let p2_abil2 = document.getElementById("r2_desc2").innerText;
+    let p2_abil3 = document.getElementById("r2_desc3").innerText;
 
     if (p1_abil1 > p2_abil1) {
         points1++;
@@ -70,11 +70,13 @@ function fight() {
         points2++;
     }
 
+    console.log(points1);
+    console.log(points2);
+
     var ans = document.getElementById("result");
     if (points1 > points2) {
-        ans.innerHTML = "Player1 Wins";
+        ans.innerText = "Player1 Wins";
     } else if(points2 > points1){
-        ans.innerHTML = "Player2 Wins"
+        ans.innerText = "Player2 Wins"
     } 
-
 }
