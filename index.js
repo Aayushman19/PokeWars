@@ -19,6 +19,7 @@ async function getPokemon() {
             document.getElementById("r1_desc1").innerHTML = data1.height;
             document.getElementById("r1_desc2").innerHTML = data1.base_experience;
             document.getElementById("r1_desc3").innerHTML = data1.weight;
+            document.getElementById("pk1").setAttribute("src", data1.sprites.front_default);
         }
 
         const data2 = await response2.json();
@@ -30,6 +31,7 @@ async function getPokemon() {
             document.getElementById("r2_desc1").innerHTML = data2.height;
             document.getElementById("r2_desc2").innerHTML = data2.base_experience;
             document.getElementById("r2_desc3").innerHTML = data2.weight;
+            document.getElementById("pk2").setAttribute("src", data2.sprites.front_default);
         }
     }
     catch (error) {
