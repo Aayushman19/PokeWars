@@ -41,8 +41,8 @@ async function getPokemon() {
 
 function fight() {
 
-    var points1 = 0;
-    var points2 = 0;
+    var points1 = false;
+    var points2 = false;
 
     //Select Ability to compare for player 1
     let p1_abil1 = document.getElementById("r1_desc1").innerText;
@@ -54,31 +54,20 @@ function fight() {
     let p2_abil2 = document.getElementById("r2_desc2").innerText;
     let p2_abil3 = document.getElementById("r2_desc3").innerText;
 
-    if (p1_abil1 > p2_abil1) {
-        points1++;
-    }
-    else {
-        points2++;
-    }
-    if (p1_abil2 > p2_abil2) {
-        points1++;
-    }
-    else {
-        points2++;
-    }
-    if (p1_abil3 > p2_abil3) {
-        points1++;
-    } else {
-        points2++;
-    }
+    var p1_total = Number(p1_abil1) + Number(p1_abil2) + Number(p1_abil3);
+    var p2_total = Number(p2_abil1) + Number(p2_abil2) + Number(p2_abil3);
 
-    console.log(points1);
-    console.log(points2);
+    if(p1_total >= p2_total){
+        points1 = true;
+    }
+    else{
+        points2 = true;
+    }
 
     var ans = document.getElementById("result");
-    if (points1 > points2) {
+    if (points1) {
         ans.innerText = "Player1 Wins";
-    } else if (points2 > points1) {
+    } else {
         ans.innerText = "Player2 Wins"
     }
 }
