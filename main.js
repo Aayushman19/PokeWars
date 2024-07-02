@@ -20,10 +20,10 @@ app.get('/', (req, res) => {
     return res.sendFile("/views/index.html");
 });
 
-app.post("/", async (req, res) => {
+app.get('/', async (req, res) => {
     const winner = document.getElementById('result').innerText;
+    console.log(winner);
     await db.query("insert into win_percentage (winner_name) values ($1)", [winner]);
-    res.end();
 });
 
 app.listen(port, () => {
