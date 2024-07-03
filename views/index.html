@@ -1,45 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokemon Wars</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="/index.js"></script>
-</head>
-<body>
-    <input type="text" id="player1" placeholder="User 1, Choose your pokemon">
-    <button onclick="getPokemon()" id="btn1" class="button">Choose</button>
-    <br><br>
-    <input type="text" id="player2" placeholder="User 2, Choose your pokemon">
-    <button onclick="getPokemon()" id ="btn2" type="submit">Choose</button>
-    <br><br>
-    <table>
-        <tr>
-          <th scope="col">Pokemon</th>
-          <th scope="col">Height</th>
-          <th scope="col">Ability</th>
-          <th scope="col">Weight</th>
-        </tr>
-        <tr >
-          <th scope="row">Pokemon 1</th>
-          <td id="r1_desc1"></td>
-          <td id="r1_desc2"></td>
-          <td id="r1_desc3"></td>
-          <img src="" alt="" id="pk1">
-        </tr>
-        <tr>
-          <th scope="row">Pokemon 2</th>
-          <td id="r2_desc1"></td>
-          <td id="r2_desc2"></td>
-          <td id="r2_desc3"></td>
-          <img src="" alt="" id="pk2">
-        </tr>
-      </table>
-      <br>
 
-      <button type="submit" id="fbtn" onclick="fight()">Fight</button>
-      <p id="result"><img src="" alt="" id="winner"></p>
-      
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokemon Wars</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="/index.js"></script>
+</head>
+
+<body>
+  <input type="text" id="player1" placeholder="User 1, Choose your pokemon">
+  <button onclick="getPokemon()" id="btn1" class="button">Choose</button>
+  <br><br>
+  <input type="text" id="player2" placeholder="User 2, Choose your pokemon">
+  <button onclick="getPokemon()" id="btn2" type="submit">Choose</button>
+  <br><br>
+  <table>
+    <tr>
+      <th scope="col">Pokemon</th>
+      <th scope="col">Height</th>
+      <th scope="col">Ability</th>
+      <th scope="col">Weight</th>
+    </tr>
+    <tr>
+      <th scope="row">Pokemon 1</th>
+      <td id="r1_desc1"></td>
+      <td id="r1_desc2"></td>
+      <td id="r1_desc3"></td>
+      <img src="" alt="" id="pk1">
+    </tr>
+    <tr>
+      <th scope="row">Pokemon 2</th>
+      <td id="r2_desc1"></td>
+      <td id="r2_desc2"></td>
+      <td id="r2_desc3"></td>
+      <img src="" alt="" id="pk2">
+    </tr>
+  </table>
+  <br>
+
+  <button type="submit" id="fbtn" onclick="fight()">Fight</button>
+  <p id="result"><img src="" alt="" id="winner"></p>
+
+  <input type="text" id="message" placeholder="Chat!" />
+  <button id="sendBtn">Send</button>
+
+  <div class="messages">
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+
+  <script>
+    const socket = io();
+      const sendBtn = document.getElementById("sendBtn");
+      const messageInput = document.getElementById("message");
+      const allMessages = document.getElementById("messages");
+
+      socket.on("message", (message) => {
+        const p = document.createElement("p");
+        p.innerText = message;
+        allMessages.appendChild(p);
+      });
+
+      sendBtn.addEventListener("click", (e) => {
+        const message = messageInput.value;
+        console.log(message);
+        socket.emit("user-message", message);
+      });
+  </script>
+
 </body>
+
 </html>
