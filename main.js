@@ -15,15 +15,20 @@ const app = express();
 const port = 5000;
 
 app.use(express.static(path.resolve("./views")));
+app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-    return res.sendFile("/views/index.html");
+    return res.render("/views/index.html");
 });
 
 app.get('/', async (req, res) => {
-    const winner = document.getElementById('result').innerText;
+    const winner = page.getElementById('result').innerText;
     console.log(winner);
-    await db.query("insert into win_percentage (winner_name) values ($1)", [winner]);
+    try{
+        await db.query("insert into win_percentage (winner_name) values ($1)", [winner]);
+    } catch(err){
+        console.log(err);
+    }
 });
 
 app.listen(port, () => {
