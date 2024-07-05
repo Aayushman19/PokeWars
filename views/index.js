@@ -66,8 +66,10 @@ function fight() {
 
     var ans = document.getElementById("result");
     if (points1) {
-        ans.innerText = "Player1 Wins";
+        const text = document.getElementById("player1").value;
+        ans.innerText = text.toUpperCase() + " Wins";
     } else {
-        ans.innerText = "Player2 Wins"
+        const text = document.getElementById("player2").value;
+        ans.innerText = text.toUpperCase() + " Wins";
     }
 }

@@ -27,11 +27,9 @@ io.on("connection", (socket) => {
 app.use(express.static(path.resolve("./views")));
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
-    return res.sendFile("/views/index.html");
-});
 
 app.get('/', async (req, res) => {
+    res.sendFile("/views/index.html");
     const winner = page.getElementById('result').innerText;
     console.log(winner);
     try {
@@ -39,6 +37,7 @@ app.get('/', async (req, res) => {
     } catch (err) {
         console.log(err);
     }
+    res.end();
 });
 
 server.listen(port, () => {
