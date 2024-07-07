@@ -30,7 +30,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get('/', async (req, res) => {
     res.sendFile("/views/index.html");
-    const winner = page.getElementById('result').innerText;
+    const winner = req.body.result;
     console.log(winner);
     try {
         await db.query("insert into win_percentage (winner_name) values ($1)", [winner]);
