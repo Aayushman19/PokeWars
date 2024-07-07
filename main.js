@@ -27,17 +27,14 @@ io.on("connection", (socket) => {
 app.use(express.static(path.resolve("./views")));
 app.use(express.urlencoded({ extended: true }));
 
+app.get('/', (req, res) =>{
+    res.render('index.html');
+});
 
-app.get('/', async (req, res) => {
-    res.sendFile("/views/index.html");
+app.post('/', async (req, res) => {
     const winner = req.body.result;
     console.log(winner);
-    try {
-        await db.query("insert into win_percentage (winner_name) values ($1)", [winner]);
-    } catch (err) {
-        console.log(err);
-    }
-    res.end();
+    await db.query("insert into win_percentage (winner_name) values ($1)", [winner]);
 });
 
 server.listen(port, () => {
